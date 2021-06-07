@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Rate Your Leader!!</h1>
+    <div class="main">
+        {% for i in json.officials%}
+        <h1>{{ i.party }} </h1>
+        <h2> {{ i.name }}</h2>
+        <img src="{{i.photoUrl}}">
+        <a href="/rate2/{{i.name}}">rate</a>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %} 
+    <link rel='stylesheet' href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <a href="/showRep/"><button>show data</button></a>
+    <div class="container">
+        <table id="customers" class="office">
+            <thead>
+                <tr >
+                    <th>ID</th>
+                    <th>Office Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in json.offices%}
+            {% for r in i.officialIndices%}
+            <tr>
+                
+                <td>{{r}}</td>
+                <td>{{i.name}}</td>
+                
+            </tr>
+            {% endfor %}
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="customers">
+            <thead>
+                <tr>
+                    <th>Offical Name</th>
+                    <th>Official Party</th>
+                    <th>Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for r in officials %}
+            <tr>
+                
+                <td>{{r.indice}}</td>
+                <td>{{r.office}}</td>
+                <td>{{r.name}}</td>
+                <td>{{r.party}}</td>
+                <td><a href="/rate">Rate your leader</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    </div>
+</body>
+</html>
+
+<!--
+    for office in offices
+        for index in officialIndices
+            <td> {officials[index].name}  {office.name}
+
+ -->
