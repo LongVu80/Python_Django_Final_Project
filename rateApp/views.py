@@ -103,7 +103,7 @@ def rate2(request):
             'json':json
         }
     
-    return render(request, '/rate2/', context)
+    return render(request, 'rate2.html', context)
 
 def message(request):
     Message.objects.create(
