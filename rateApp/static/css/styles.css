@@ -16,6 +16,7 @@ header{
 .container{
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
 li{
@@ -32,7 +33,7 @@ table{
 #customers {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+
   }
   
 #customers td, #customers th {
@@ -77,7 +78,4 @@ table{
 
 .office{
     width: 350px;
-}
-img{
-    width: 25%;
 }
