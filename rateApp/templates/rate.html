@@ -7,14 +7,48 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Rate Your Leader!!</h1>
-    <div class="main">
-        {% for i in json.officials%}
-        <h1>{{ i.party }} </h1>
-        <h2> {{ i.name }}</h2>
-        <img src="{{i.photoUrl}}">
-        <a href="/rate2/{{i.name}}">rate</a>
-        {% endfor %}
+    <a href="/rate/">rate</a>
+    <div class="container">
+        <div class="row">
+            <table id="customers">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Office</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for j in json.offices %}
+                    {% for r in i.officialIndices%}
+                    <tr>
+                        <td>{{r}}</td>
+                        <td>{{r.name}}</td>
+                    </tr>
+                    {% endfor %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <table id="customers">
+                <thead>
+                    <tr>
+                        <th>Offical Name</th>
+                        <th>Official Party</th>
+                        <th>Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in json.officials%}
+                    <tr>
+                        <td>{{i.name}}</td>
+                        <td>{{i.party}}</td>
+                        <td><a href="/rate2/{{i.name}}">rate</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>

@@ -55,35 +55,35 @@ def success(request):
             'name' : User.objects.get(id=request.session['user_id']),
             'messages' : Message.objects.all().order_by('-created_at')
         }
-        return render(request, 'dashboard.html', context)
+        return render(request, 'rate.html', context)
     return redirect ('/')
 
-def home(request):
-    return render(request, 'dashboard.html')
+# def home(request):
+#     return render(request, 'dashboard.html')
         
-def showRep(request):
-    address = User.objects.get(id = request.session['user_id']).address
-    response = requests.get(f"https://www.googleapis.com/civicinfo/v2/representatives?key={API_KEY}&address={address}&includeOffices=true")
-    json= response.json()
-    context = {
-        'json':json
-    }
-    if request.method == "GET":
-        for i in json['offices']:
-    # loop through official Indices
-            for j in i['officialIndices']:
-                officials=Official.objects.create(
-                    indice =j, 
-                    office = i['name'], 
-                    name= json['officials'][j]['name'],
-                    party = json['officials'][j]['party'])
-            return redirect(f'/home/{officials.id}')
-    # print the dictionary we are adding a new key to
-    #        print(json['officials'][j], i['name'])
-    #   # go into the officials array of dictionaries, get index j, and add elected_office as key to dictionary
-    #     json['officials'][j]['elected_office'] = i['name'] 
-    #     print(json['officials'][j])
-    return render(request, 'dashboard.html', context)
+# def showRep(request):
+#     address = User.objects.get(id = request.session['user_id']).address
+#     response = requests.get(f"https://www.googleapis.com/civicinfo/v2/representatives?key={API_KEY}&address={address}&includeOffices=true")
+#     json= response.json()
+#     context = {
+#         'json':json
+#     }
+#     if request.method == "GET":
+#         for i in json['offices']:
+#     # loop through official Indices
+#             for j in i['officialIndices']:
+#                 officials=Official.objects.create(
+#                     indice =j, 
+#                     office = i['name'], 
+#                     name= json['officials'][j]['name'],
+#                     party = json['officials'][j]['party'])
+#             return redirect(f'/home/{officials.id}')
+#     # print the dictionary we are adding a new key to
+#     #        print(json['officials'][j], i['name'])
+#     #   # go into the officials array of dictionaries, get index j, and add elected_office as key to dictionary
+#     #     json['officials'][j]['elected_office'] = i['name'] 
+#     #     print(json['officials'][j])
+#     return render(request, 'dashboard.html', context)
 
 def rate(request):
     address = User.objects.get(id = request.session['user_id']).address
@@ -101,10 +101,9 @@ def rate2(request):
     for i in json['officials']:
         context = {
             'json':json
-            'name':i['name']
         }
     
-    return render(request, '/rate2/{i.name}', context)
+    return render(request, '/rate2/', context)
 
 def message(request):
     Message.objects.create(
