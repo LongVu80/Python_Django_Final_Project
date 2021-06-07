@@ -5,50 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% load static %} 
+    <link rel='stylesheet' href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <a href="/rate/">rate</a>
     <div class="container">
-        <div class="row">
-            <table id="customers">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Office</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for j in json.offices %}
-                    {% for r in i.officialIndices%}
-                    <tr>
-                        <td>{{r}}</td>
-                        <td>{{r.name}}</td>
-                    </tr>
-                    {% endfor %}
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div class="row">
-            <table id="customers">
-                <thead>
-                    <tr>
-                        <th>Offical Name</th>
-                        <th>Official Party</th>
-                        <th>Rate</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for i in json.officials%}
-                    <tr>
-                        <td>{{i.name}}</td>
-                        <td>{{i.party}}</td>
-                        <td><a href="/rate2/{{i.name}}">rate</a></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+        <table id="customers" class="office">
+            <thead>
+                <tr >
+                    <th>ID</th>
+                    <th>Office Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in json.offices%}
+            {% for r in i.officialIndices%}
+            <tr>
+                
+                <td>{{r}}</td>
+                <td>{{i.name}}</td>
+                
+            </tr>
+            {% endfor %}
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="customers">
+            <thead>
+                <tr>
+                    <th>Offical Name</th>
+                    <th>Official Party</th>
+                    <th>Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for j in json.officials %}
+            <tr>
+                <td>{{j.name}}</td>
+                <td>{{j.party}}</td>
+                <td><a href="/rate2/{{i.name}}">rate</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
